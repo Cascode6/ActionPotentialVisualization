@@ -1,0 +1,637 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Action Potential Animation</title>
+        <script src="d3.js"></script>
+        <script src="dimple.min.js"></script>
+        <script type="text/css">
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: black;
+        }
+
+        .axis text {
+            font-family: sans-serif;
+            font-size: 10px;
+        }
+        
+        </script>
+    </head>
+<body>
+    <div id="VoltageChart"></div>
+    <div id="TextExplain">
+        
+    </div>
+    <div id="neuron">
+        <svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <!-- Edited for programmatic referenceability and readability-->
+
+ <g>
+  <title>Neuron</title>
+  <rect x="-1" y="-1" width="388.66564" height="268.66596" id="canvas_background" fill="#fff"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_3" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Cell Body</title>
+  <!--Upper Axon line -->
+  <line fill="none" stroke="#000" stroke-width="2" x1="140.00196" y1="150.94509" x2="442.66466" y2="149.61177" id="axon" stroke-linejoin="undefined" stroke-linecap="undefined"/>
+  
+  <!-- Top two branches -->
+  <path fill="none" stroke="#000" stroke-width="2" d="m141.00195,151.61174c-3.99995,-85.33221 -95.33207,-75.33234 -95.33207,-75.33234" id="branch"/>
+  <path fill="none" stroke="#000" stroke-width="2" d="m440.99802,150.27843c7.33325,-71.3324 97.33206,-72.66571 96.66537,-72.66571" id="branch"/>
+  
+  <!-- Lower axon line -->
+  <line fill="none" stroke="#000" stroke-width="2" x1="138.66864" y1="188.27793" x2="441.33134" y2="186.94461" id="axon" stroke-linejoin="undefined" stroke-linecap="undefined"/>
+  
+  <!-- Bottom two branches -->
+  <path fill="none" stroke="#000" stroke-width="2" d="m441.66467,261.61029c-3.99994,-85.33221 -95.33209,-75.33234 -95.33209,-75.33234" id="branch" transform="rotate(179.202, 441.665, 223.764)"/>
+  <path fill="none" stroke="#000" stroke-width="2" d="m43.00325,188.94458c7.38383,-71.3324 98.0033,-72.66571 97.332,-72.66571" id="branch" transform="rotate(-180, 91.6711, 188.945)"/>
+  
+  <!-- The Glial Cells -->
+  <rect fill="white" stroke="#000" stroke-width="2" x="165" y="143.61185" width="43.33277" height="53.33263" id="glial_1"/>
+  <rect fill="white" stroke="#000" stroke-width="2" x="232.50001" y="143.61185" width="43.33277" height="53.33263" id="glial_2"/>
+  <rect fill="white" stroke="#000" stroke-width="2" x="299" y="144.2785" width="43.33277" height="53.33263" id="glial_3"/>
+  <rect fill="white" stroke="#000" stroke-width="2" x="367.49996" y="143.11185" width="43.33277" height="53.33263" id="glial_4"/>
+  
+  <!-- The cloride ions! -->
+  <ellipse ry="9" rx="9" id="ion_1" cy="105.41667" cx="49.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_1" cy="148.41667" cx="66.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_1" cy="167.41667" cx="39.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_2" cy="173.41667" cx="123.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_2" cy="209.41667" cx="99.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_2" cy="144.41667" cx="114.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_3" cy="120.41667" cx="89.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_3" cy="233.41667" cx="48.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_3" cy="169.41667" cx="95.5" stroke-width="1.5" stroke="none" fill="none"/>
+  <ellipse ry="9" rx="9" id="ion_3" cy="195.41667" cx="68.5" stroke-width="1.5" stroke="none" fill="none"/>
+  
+  <!-- Activation Bolts -->
+  <path transform="rotate(-107.974, 102.491, 204.941)" id="Activation" d="m98.65102,161.19672l7.23876,24.62727l-2.98447,2.90617l9.11715,21.10031l-2.98447,3.52295l11.27286,35.33092l-19.12019,-27.07822l3.64578,-3.75792l-11.87703,-17.34238l4.25432,-5.36186l-12.54266,-18.18878l13.97994,-15.75847z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  <path transform="rotate(-70.5499, 92.491, 168.941)" id="Activation" d="m88.65102,125.19672l7.23876,24.62727l-2.98447,2.90617l9.11715,21.10031l-2.98447,3.52295l11.27286,35.33092l-19.12019,-27.07822l3.64578,-3.75792l-11.87703,-17.34238l4.25432,-5.36186l-12.54266,-18.18878l13.97994,-15.75847z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  <path transform="rotate(-37.8699, 99.991, 135.441)" id="Activation" d="m96.14627,90.98996l7.24773,25.02517l-2.98817,2.95313l9.12845,21.44124l-2.98817,3.57986l11.28682,35.90175l-19.14388,-27.51572l3.6503,-3.81863l-11.89174,-17.62257l4.25958,-5.44849l-12.55819,-18.48267l13.99726,-16.01308z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  
+  <!--Sodium Gated Channel Bolt-->
+  <path transform="rotate(-131.926, 211.991, 217.941)" id="l_bolt" d="m209.72873,195.94141l4.26529,12.38574l-1.75854,1.46161l5.3721,10.61194l-1.75854,1.77179l6.6423,17.76892l-11.26617,-13.61841l2.14819,-1.88995l-6.99829,-8.72198l2.50677,-2.69662l-7.3905,-9.14764l8.2374,-7.92538z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  <path id="l_bolt" d="m210.72873,101.94141l4.2653,12.38574l-1.75854,1.46161l5.37209,10.61194l-1.75854,1.77179l6.64229,17.76892l-11.26616,-13.61841l2.14819,-1.88995l-6.99829,-8.72198l2.50676,-2.69662l-7.3905,-9.14764l8.23741,-7.92538z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  <path transform="rotate(-131.926, 278.991, 216.941)" id="m_bolt" d="m276.72873,194.94141l4.26529,12.38574l-1.75854,1.46161l5.3721,10.61194l-1.75854,1.77179l6.6423,17.76892l-11.26617,-13.61841l2.14819,-1.88995l-6.99829,-8.72198l2.50677,-2.69662l-7.3905,-9.14764l8.2374,-7.92538z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  <path id="m_bolt" d="m274.72873,98.94141l4.26529,12.38574l-1.75854,1.46161l5.3721,10.61194l-1.75854,1.77179l6.6423,17.76892l-11.26617,-13.61841l2.14819,-1.88995l-6.99829,-8.72198l2.50677,-2.69662l-7.3905,-9.14764l8.2374,-7.92538z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  <path transform="rotate(-131.926, 342.991, 217.941)" id="r_bolt" d="m340.72873,195.94141l4.26529,12.38574l-1.75854,1.46161l5.3721,10.61194l-1.75854,1.77179l6.6423,17.76892l-11.26617,-13.61841l2.14819,-1.88995l-6.99829,-8.72198l2.50677,-2.69662l-7.3905,-9.14764l8.2374,-7.92538z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  <path id="r_bolt" d="m338.72873,99.94141l4.26529,12.38574l-1.75854,1.46161l5.3721,10.61194l-1.75854,1.77179l6.6423,17.76892l-11.26617,-13.61841l2.14819,-1.88995l-6.99829,-8.72198l2.50677,-2.69662l-7.3905,-9.14764l8.2374,-7.92538z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="none"/>
+  
+  <!-- directional arrows -->
+  <path id="arrow_1" d="m158.26169,169.8407l-7.46346,-6.74989l0,3.37419l-8.01198,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01198,0l0,3.37498l7.46346,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_2" d="m191.26135,170.3407l-7.46346,-6.74989l0,3.37419l-8.01198,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01198,0l0,3.37498l7.46346,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_3" d="m225.261,170.34068l-7.46344,-6.74989l0,3.37419l-8.01199,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01199,0l0,3.37498l7.46344,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_4" d="m258.76068,169.3407l-7.46342,-6.74989l0,3.37419l-8.01199,0l0,-10.12419l21.49977,0l0,26.99974l-21.49977,0l0,-10.12489l8.01199,0l0,3.37498l7.46342,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_5" d="m292.26035,169.8407l-7.46344,-6.74989l0,3.37419l-8.01199,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01199,0l0,3.37498l7.46344,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_6" d="m325.26004,170.34068l-7.46344,-6.74989l0,3.37419l-8.01199,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01199,0l0,3.37498l7.46344,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_7" d="m359.2597,169.84068l-7.46344,-6.74989l0,3.37419l-8.01199,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01199,0l0,3.37498l7.46344,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_8" d="m393.2594,168.8407l-7.46344,-6.74989l0,3.37419l-8.01199,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01199,0l0,3.37498l7.46344,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  <path id="arrow_9" d="m429.25903,168.84071l-7.46344,-6.74989l0,3.37419l-8.01199,0l0,-10.12419l21.49979,0l0,26.99974l-21.49979,0l0,-10.12489l8.01199,0l0,3.37498l7.46344,-6.74994l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+  
+  <!-- The Big Arrow -->
+  <path id="Signal" d="m469.43311,114.05076l47.62506,0l15.87433,53.49677l-15.87433,53.50218l-47.62506,0l15.87503,-53.50218l-15.87503,-53.49677z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="none" fill="#fff"/>
+ </g>
+</svg>
+    </div>
+    
+    
+    <script type="text/javascript">
+    
+    d3.json("voltages.json", function(error, json) {
+    if (error) {return console.warn(error)};
+    data = json;
+    draw(data);
+    });
+    
+    function draw(data){
+    
+    var padding = 30;
+    
+    // initialize axes scales
+    var yScale = d3.scale.linear()
+                        .domain([-95, 45])
+                        .range([350, 10]);
+        
+    var xScale = d3.scale.linear()
+                    .domain([0, 5])
+                    .range([100, 550]);
+       
+    // initialize axes themselves
+    var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient("bottom")
+                  .ticks(10); 
+    
+    var yAxis = d3.svg.axis()
+                  .scale(yScale)
+                  .orient("left")
+                  .ticks(5); 
+    
+    // create a scatterchart to display Voltage vs. Time
+    var VoltageSVG = d3.select("#VoltageChart")
+                        .append("svg")
+                        .attr("width", 600)
+                        .attr("height", 400);
+    
+    VoltageSVG.selectAll("circle")
+            .data(data.points)
+            .enter()
+            .append("circle")
+            .attr("id", function(d, i) {return "Time_" + i;})
+            .attr("cx", function(d, i){return xScale(d.Time);})
+            .attr("cy", function(d){return yScale(d.Voltage);})
+            .attr("r", 5)
+            .attr("fill", "black")
+            ;
+    
+    VoltageSVG.selectAll("text")
+            .data(data.points)
+            .enter()
+            .append("text")
+            .attr("id", function(d, i) {return "Time_" + i;})
+            .text(function(d){
+                return d.Description;
+            })
+            .attr("x", function(d, i){return xScale(d.Time) - 15;})
+            .attr("y", function(d){return yScale(d.Voltage) + 15;})
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "11px")
+            .attr("fill", "red");
+    
+    var lines = [-55, 0, 40, -90];
+    VoltageSVG.selectAll("line")
+            .data(lines)
+            .enter()
+            .append("line")
+            .attr("x1", 80)
+            .attr("x2", 590)
+            .attr("y1", function(d){return yScale(d)})
+            .attr("y2", function(d){return yScale(d)})
+            .attr("stroke", "grey");
+    
+    VoltageSVG.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(0," + (400 - padding) + ")")
+            .call(xAxis);
+    
+    VoltageSVG.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(" + 80 + ",0)")
+            .call(yAxis);
+    
+    
+    // Add a button to the text section
+    buttonSVG = d3.select("#TextExplain")
+                    .attr("id", "button")
+                    .append("svg")
+                    .attr("height", 150)
+                    .attr("width", 150);
+    
+    buttonSVG.append("circle")
+            .attr("cx", 75)
+            .attr("cy", 75)
+            .attr("r", 50)
+            .attr("stroke", "black")
+            .attr("fill", "red");
+    
+    buttonSVG.append("text")
+             .text("Poke the Neuron!")
+             .attr("x", 29)
+             .attr("y", 75)
+             .attr("font-family", "sans-serif")
+             .attr("font-size", "11px")
+             .attr("fill", "black");
+    
+    
+    var clicks = 0;
+    
+           
+    // Animation
+    function Animate(clicks) {
+        switch (clicks) {
+            case 0: 
+            // Highlight Bubble Chart by Time Step and reveal Ions
+                
+                d3.selectAll("#Time_0")
+                    .transition()
+                    .delay(2000)
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                break;
+                
+                
+            case 1:
+            // Highlight Time 2 and reveal more ions
+                d3.selectAll("#Time_0")
+                    .transition()
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                d3.selectAll("#Time_1")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                d3.selectAll("#ion_1")
+                    .transition()
+                    .attr("fill", "lightblue");
+                break;
+                
+                
+            case 2:
+            // Highlight Time 3 and reveal all ions
+                d3.selectAll("#Time_1")
+                    .transition()
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                d3.selectAll("#Time_2")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                    
+                d3.selectAll("#ion_3")
+                    .transition()
+                    .attr("fill", "lightblue");
+                break;
+                
+            case 3:
+                d3.selectAll("#Time_2")
+                    .transition()
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                d3.selectAll("#Time_3")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                    
+                d3.selectAll("#ion_2")
+                    .transition()
+                    .attr("fill", "lightblue");
+                break;
+            
+            
+            
+            
+            case 4:
+            
+            // // // // Frame functions of animation // // //
+            
+            // initialize the average delay
+            var delay = 500;
+            
+            // frame 0: Activation at the Axon Hillock
+            function f_0() {
+                // remove the old time
+                d3.selectAll("#Time_3")
+                        .transition()
+                        .attr("fill", "black")
+                        .attr("r", 5);
+                // remove the ions
+                d3.selectAll("#ion_1")
+                        .transition()
+                        .attr("fill", "none");
+                    d3.selectAll("#ion_2")
+                        .transition()
+                        .attr("fill", "none");
+                    d3.selectAll("#ion_3")
+                        .transition()
+                        .attr("fill", "none");
+                // set new time
+                d3.selectAll("#Time_4")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                d3.selectAll("#Time_4")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                    
+                // these rays indicate the axon hillock has been activated
+                d3.selectAll("#Activation")
+                    .transition()
+                    .attr("fill", "yellow");
+                d3.selectAll("#Activation")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+            
+                    
+            // frame 1
+            function f_1(){
+                    d3.selectAll("#arrow_1")
+                        .transition()
+                        .attr("fill", "lightblue");
+                    d3.selectAll("#arrow_1")
+                        .transition()
+                        .delay(delay)
+                        .attr("fill", "none");
+                
+            }   
+            // frame 2
+            function f_2() {
+                // direction of signal
+                d3.selectAll("#arrow_2")
+                    .transition()
+                    .attr("fill", "lightblue");
+                
+            }
+            
+            
+            
+            // Highlight the start of repolarization - frame 3
+            function f_3()
+            {
+            // chart time step
+            d3.selectAll("#Time_5")
+                .transition()
+                .attr("fill", "red")
+                .attr("r", 10);
+            d3.selectAll("#Time_5")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "black")
+                    .attr("r", 5);
+            // sodium-gated channel activated!
+            d3.selectAll("#l_bolt")
+                .transition()
+                .attr("fill", "yellow");
+            
+            // next arrow
+            d3.selectAll("#arrow_3")
+                .transition()
+                .delay(delay)
+                .attr("fill", "lightblue");
+            // remove last arrow
+            d3.selectAll("#arrow_2")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+                
+            // close channel
+            d3.selectAll("#l_bolt")
+                .transition()
+                .delay(delay)
+                .attr("fill", "none");
+                
+            
+            
+            
+            
+                
+            }
+            // frame 4
+            function f_4(){
+                // direction of signal
+                
+                d3.selectAll("#arrow_3")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+            // frame 5
+            function f_5() {
+                // direction of signal
+                d3.selectAll("#arrow_4")
+                    .transition()
+                    .attr("fill", "lightblue");
+                
+            }
+                
+            // frame 6
+            function f_6() {
+                // time step
+                d3.selectAll("#Time_6")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                d3.selectAll("#Time_6")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                
+                // sodium-gated channel activated
+                d3.selectAll("#m_bolt")
+                    .transition()
+                    .attr("fill", "yellow");
+                // show next arrow
+                d3.selectAll("#arrow_5")
+                    .transition()
+                    .attr("fill", "lightblue"); 
+                    
+                d3.selectAll("#m_bolt")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+                   
+                // remove last arrow
+                d3.selectAll("#arrow_4")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+            
+            
+            function f_7(){
+                // signal continues, 2 steps
+                
+                d3.selectAll("#arrow_5")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+            
+            
+            function f_8() {
+                // signal continues 
+                d3.selectAll("#arrow_6")
+                    .transition()
+                    .attr("fill", "lightblue");
+                
+            }
+            
+            
+                // cascade 2
+            function f_9() {
+                d3.selectAll("#Time_7")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                d3.selectAll("#Time_7")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                    
+                // sodium-gated channel boost
+                d3.selectAll("#r_bolt")
+                    .transition()
+                    .attr("fill", "yellow");
+                    
+                // show next arrow
+                d3.selectAll("#arrow_7")
+                    .transition()
+                    .attr("fill", "lightblue");
+                    
+                
+                d3.selectAll("#r_bolt")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+                    
+                
+                // remove last arrow
+                d3.selectAll("#arrow_6")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+                
+            }
+                    
+            function f_10() {
+                // signal continues
+                
+                d3.selectAll("#arrow_7")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+            
+            function f_11() {
+                // next time step
+                d3.selectAll("#Time_8")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                d3.selectAll("#Time_8")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                    
+                // signal continues
+                d3.selectAll("#arrow_8")
+                    .transition()
+                    .attr("fill", "lightblue");
+                d3.selectAll("#arrow_8")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+            
+            function f_12(){
+                // last small arrow
+                d3.selectAll("#arrow_9")
+                    .transition()
+                    .attr("fill", "lightblue");
+                d3.selectAll("#arrow_9")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+            
+            
+                
+            // frame 13
+            function f_13() {
+                // time update
+                d3.selectAll("#Time_9")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                d3.selectAll("#Time_9")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                    
+                // signal arrives at Terminal
+                d3.selectAll("#Signal")
+                    .transition()
+                    .attr("fill", "lightblue");
+                
+            }
+            
+            function f_14() {
+                // last time step
+                d3.selectAll("#Time_10")
+                    .transition()
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                d3.selectAll("#Time_10")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "black")
+                    .attr("r", 5);
+                // remove signal
+                d3.selectAll("#Signal")
+                    .transition()
+                    .delay(delay)
+                    .attr("fill", "none");
+            }
+                
+            function timedUpdate() {
+                setTimeout(f_0, 0)
+                setTimeout(f_1, delay)
+                setTimeout(f_2, (delay * 2))
+                setTimeout(f_3, (delay * 3))
+                setTimeout(f_4, (delay * 4))
+                setTimeout(f_5, (delay * 5))
+                setTimeout(f_6, (delay * 6))
+                setTimeout(f_7, (delay * 7))
+                setTimeout(f_8, (delay * 8))
+                setTimeout(f_9, (delay * 9))
+                setTimeout(f_10, (delay * 10))
+                setTimeout(f_11, (delay * 11))
+                setTimeout(f_12, (delay * 12))
+                setTimeout(f_13, (delay * 13))
+                setTimeout(f_14, (delay * 14))
+            }
+            timedUpdate();    
+            
+            break;
+            
+                
+        }
+    }
+    // Step 1: 1 button press
+    // circles revealed one at a time
+    
+    // Step 2: 
+    
+    // step 4: 4 button presses
+    // circles hidden, first 3 lightning bolts revealed
+    
+    // step 5: 5 button presses
+    // trigger arrows and electrical jolts in sequence
+    // first, arrow, then arrow under glial cell, then bolts, arrow, arrow, bolts, arrow, arrow, bolts
+    // remove as you go
+    // then Big Arrow
+   
+    // step 6: 6 button presses
+    // reset all to beginning
+    
+    // button press event listener
+    Animate(clicks);
+    d3.select("#button")
+        .on("click", function() {
+            clicks = clicks + 1;
+            if (clicks === 5) {
+                clicks = 0;
+            }
+            console.log(clicks);
+            Animate(clicks);
+    })
+    // call animation
+    
+    }
+    </script>
+    
+</body>
