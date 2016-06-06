@@ -15,7 +15,7 @@ For the initial neuron diagram, I took the bare bones from an image I designed u
 
 My feedback was that the bubble chart and threshold lines conveyed the idea of steps in a process well (yay!), but the combination of click-through and animation was not ideal (boo). I took reviewer 2's advice and separated my functionality into one button for playing the animation as a slowed-down time sequence, and another for displaying the whole sequence - this allows the user to play with the neuron fire simply, and click-reveal-text the different symbols and states for more information. I attempted hover-reveal-text, but as these were some of the longest text segments in the display, I found it too spastic for absorbing the information. 
 
-
+A Udacity review suggested that my initial design, a step-through-animation, deserved a little more attention. I also wanted to include more information about the voltage stages separate from the fire event, and streamline the display on all text updates. After being pointed to a [modelbox tutorial](http://www.w3schools.com/howto/howto_css_modals.asp), I updated the click events to slide up from the bottom - I especially liked this version, as it highlighted the text while leaving the visualization visible. For the chart, I combined a hover-zoom feature for readability with a click-reveal-text feature, to give the user complete control over how much and how long information is displayed.
 
 
 
@@ -31,7 +31,13 @@ Feedback on [neuronindex1_5.html](https://github.com/Cascode6/ActionPotentialVis
   
 These suggestions were all addressed in [neuronindex2.html](https://github.com/Cascode6/ActionPotentialVisualization/blob/master/neuronindex2.html). To accommodate the animation and the click-sensitivity features, I separated them into two additional JS files, and set up event handlers to call them in the main HTML file. I made the suggested color changes, arrangement changes and labeling changes, and insured that my graphics, title and text explanation would remain centered on the page. 
 
-
+Feedback for [neuronindex2.html](https://github.com/Cascode6/ActionPotentialVisualization/blob/master/neuronindex2.html)
+  "There’s a lot going on at the same time. This makes it difficult to focus and follow the “storyline”. - Udacity Review
+  
+Feedback for [neuronindex2_5.html](https://github.com/Cascode6/ActionPotentialVisualization/blob/master/neuronindex2_5.html)
+  "It looks really pretty! So, how are the voltage levels and the neuron firing related again?" - Reviewer 4
+  
+These suggestions are taken into account in [neuronindex3.html](https://github.com/Cascode6/ActionPotentialVisualization/blob/master/neuronindex3.html). I reinstated the click-through to activation, and changed it so that all "bonus" informative text is contained in a modelbox that slides up from the bottom - for most browser arrangements, this will highlight the information, while still leaving the entire visualization visible (but darkened slightly). 
 
 Resources used:   
 my old notes from college on neuron anatomy and the action potential event
